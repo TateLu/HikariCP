@@ -56,6 +56,7 @@ import static java.util.concurrent.locks.LockSupport.parkNanos;
  *
  * @param <T> the templated type to store in the bag
  */
+//书签 连接池实现 ConcurrentBag才是真正的连接池，而HikariPool是用来管理连接池的。
 public class ConcurrentBag<T extends IConcurrentBagEntry> implements AutoCloseable
 {
    private static final Logger LOGGER = LoggerFactory.getLogger(ConcurrentBag.class);
@@ -117,6 +118,7 @@ public class ConcurrentBag<T extends IConcurrentBagEntry> implements AutoCloseab
     * @return a borrowed instance from the bag or null if a timeout occurs
     * @throws InterruptedException if interrupted while waiting
     */
+   //书签 获取数据库连接
    public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
    {
       // Try the thread-local list first
